@@ -1,3 +1,3 @@
 # ReactHookForm-MatUI
-React hook form integration for Material-UI components 
-work in progress
+React hook form integration for Material-UI components. 
+Work in progress
