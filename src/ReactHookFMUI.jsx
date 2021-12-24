@@ -28,14 +28,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ReactTextField = (props) => {
-  const { control, name, defaultValue, error } = props;
+  const { control, name, defaultValue, error, helperText } = props;
+  console.log();
   return (
     <Controller
       name={name}
       control={control}
-      defaultValue={defaultValue || ''}
+      defaultValue={defaultValue || null}
       render={({ field }) => (
-        <TextField {...props} error={error?.[name] ? true : false} {...field} />
+        <TextField
+          {...props}
+          helperText={error[name]?.message || helperText}
+          error={error?.[name] ? true : false}
+          value={defaultValue || null}
+          {...field}
+        />
       )}
     />
   );
@@ -55,7 +62,7 @@ const ReactSelectField = (props) => {
     <Controller
       name={name}
       control={control}
-      defaultValue={defaultValue || ''}
+      defaultValue={defaultValue || undefined}
       render={({ field }) => (
         <FormControl error={error?.[name] ? true : false}>
           <InputLabel>{label}</InputLabel>
@@ -89,7 +96,7 @@ const ReactCheckboxField = (props) => {
     <Controller
       name={name}
       control={control}
-      defaultValue={defaultValue || ''}
+      defaultValue={defaultValue || false}
       render={({ field }) => (
         <FormControl error={error?.[name] ? true : false}>
           <FormControlLabel
