@@ -29,18 +29,17 @@ const useStyles = makeStyles((theme) => ({
 
 const ReactTextField = (props) => {
   const { control, name, defaultValue, error, helperText } = props;
-  console.log();
   return (
     <Controller
       name={name}
       control={control}
-      defaultValue={defaultValue || null}
+      defaultValue={defaultValue || undefined}
       render={({ field }) => (
         <TextField
           {...props}
           helperText={error[name]?.message || helperText}
           error={error?.[name] ? true : false}
-          value={defaultValue || null}
+          value={defaultValue || undefined}
           {...field}
         />
       )}
